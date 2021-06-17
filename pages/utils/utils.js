@@ -1,5 +1,6 @@
-  function sendQuery(url, query, variables) {
-    return my.request({method: 'POST', url: url, data: {query}});
+  function sendQuery(method, url, query, variables) {
+    console.log(url);
+    return my.request({method: method, url: url, data: query});
   }
 
   function isGraphAllowed(fromVersion, toVersion) {
@@ -14,4 +15,18 @@
     return toVersionNum < fromVersionNum;
   }
 
-  export default { sendQuery, isGraphAllowed}
+  async function initialiseMagentoToken(env, url) {
+    console.log(url);
+    const payload = {
+      username: env.ADMIN_USERNAME,
+      password: env.ADMIN_PASSWORD
+    }
+
+    await sendQuery('POST', url + '/integration/admin/token', payload)
+    .then(response => {
+      return response;
+    });
+    
+  }
+
+  export default { sendQuery, isGraphAllowed, initialiseMagentoToken}

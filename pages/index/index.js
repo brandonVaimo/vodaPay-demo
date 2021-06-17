@@ -20,13 +20,12 @@ Page({
   },
   onReady() {
     if (isGraphAllowed) {
-      utilsInterface.sendQuery(url, queryInterface.getCurrenciesQuery())
+      utilsInterface.sendQuery('POST', url, queryInterface.getCurrenciesQuery())
       .then(response => {
         console.log(response);
       });
     } else {
-      utilsInterface.sendQuery(url + '/products', queryInterface.getCurrenciesQuery())
-      .then(response => {
+      utilsInterface.initialiseMagentoToken(env, url).then(response => {
         console.log(response);
       });
     }
