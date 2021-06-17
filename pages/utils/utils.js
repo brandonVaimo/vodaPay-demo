@@ -24,6 +24,8 @@
 
     await sendQuery('POST', url + '/integration/admin/token', payload)
     .then(response => {
+      // ToDo: Remember that the token times out, so you need to refresh it every hour
+      env.ADMIN_TOKEN = response;
       return response;
     });
     

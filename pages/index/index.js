@@ -44,8 +44,8 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: 'My App',
-      desc: 'My App description',
+      title: 'My Graph Test',
+      desc: 'A mini app build on the AliPay framework',
       path: 'pages/index/index',
     };
   },
