@@ -1,0 +1,4 @@
+
+<view> {{data }}
+  this is a blank page
+</view>
